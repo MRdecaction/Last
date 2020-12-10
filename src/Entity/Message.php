@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ThemeRepository;
+use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ThemeRepository::class)
- * @ORM\Table(name="tbl_Theme")
+ * @ORM\Entity(repositoryClass=MessageRepository::class)
+ * @ORM\Table(name="tbl_Message")
  */
-class Theme
+class Message
 {
     /**
      * @ORM\Id
@@ -21,10 +21,10 @@ class Theme
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $sujet;
+    private $texte;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $date;
 
@@ -33,14 +33,14 @@ class Theme
         return $this->id;
     }
 
-    public function getSujet(): ?string
+    public function getTexte(): ?string
     {
-        return $this->sujet;
+        return $this->texte;
     }
 
-    public function setSujet(string $sujet): self
+    public function setTexte(string $texte): self
     {
-        $this->sujet = $sujet;
+        $this->texte = $texte;
 
         return $this;
     }
@@ -50,7 +50,7 @@ class Theme
         return $this->date;
     }
 
-    public function setDate(?\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
